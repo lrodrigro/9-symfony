@@ -1,0 +1,20 @@
+{# templates/wild/seasons.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}{{ slug }}{% endblock %}
+
+{% block body %}
+    <h1>{{ slug }} (série télévisée)</h1>
+    {% for season in seasons %}
+        <div>
+            <h2><a href="{{path('episodes', { 'id':season.id }) }}">Saison {{ season.number }} de {{ slug }}</a></h2>
+            <p>{{ season.description }}</p>
+        </div>
+    {% else %}
+        Aucune saison trouvée.
+    {% endfor %}
+    <div class="home-link">
+        <a href="{{ path('wild_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
+{% endblock %}

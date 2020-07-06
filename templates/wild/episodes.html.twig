@@ -1,0 +1,26 @@
+{# templates/wild/episodes.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}Saison {{ season.number }} de {{ program.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ program.title }} (série télévisée)</h1>
+    <div>
+        <h2>Saison {{ season.number }} de {{ program.title }}</h2>
+        {{ season.description | raw }}
+    </div>
+    <div class="episode-box title-box">
+        <span>Liste des épisodes</span>
+        <ul>
+            {% for episode in episodes %}
+                <li>
+                    <span>Épisode {{  episode.number }} : {{  episode.title }}</span>
+                </li>
+            {% else %}
+                Aucune série trouvée.
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="{{ path('wild_index') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}
